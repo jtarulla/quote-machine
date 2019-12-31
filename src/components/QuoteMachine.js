@@ -9,19 +9,22 @@ import IconButton from '@material-ui/core/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 
-
-const theme = createMuiTheme({
-  typography: {
-    fontSize: 20,
-    fontFamily: [
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+let theme = createMuiTheme({
+  typography : {
+    fontSize: "6rem",
+    [createMuiTheme().breakpoints.down("xs")]: {
+      fontSize: "3rem"
   },
-});
+  fontFamily: [
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+}});
+
+theme = responsiveFontSizes(theme)
 
 const useStyles = makeStyles({
   button: {
@@ -39,13 +42,13 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
   <Card>
     <CardContent>
     <ThemeProvider theme={theme}>
-      <Typography id="text" color="textSecondary" align="center">
-       "{selectedQuote.quote}"  <br /><br /><Typography id="author" align="right">{selectedQuote.author}</Typography>
+      <Typography className={useStyles().typography} variant="h3" id="text" color="textSecondary" align="center">
+       "{selectedQuote.quote}"  <br /><br /><Typography className={useStyles().typography} variant="h4" id="author" align="right">{selectedQuote.author}</Typography>
       </Typography>
     </ThemeProvider>
     </CardContent>
     <CardActions>
-      <Button className={useStyles().button} id="new-quote" size="small" onClick={handleClick}>Next Quote</Button>
+      <Button className={useStyles().button} id="new-quote" size="small" onClick={handleClick}>New Quote</Button>
       <IconButton
         id="tweet-quote"
         target="_blank"

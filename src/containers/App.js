@@ -62,8 +62,8 @@ class App extends Component {
   render() {
     return (
       <>
-        <Grid className={this.props.classes.container} id="quote-box" justify="center" container>
-          <Grid xs={6} ls={3} item>
+        <Grid className={this.props.classes.container} id="quote-box" fixed justify="center" container xs ls>
+          <Grid xs={9} item>
             {
               this.selectedQuote ?
               <QuoteMachine selectedQuote={this.selectedQuote} handleClick={this.handleClick} /> 
@@ -71,13 +71,13 @@ class App extends Component {
             }  
           </Grid>
         </Grid>
-        <footer className={this.props.classes.footer} footer>
-          <IconButton
+        <footer className={this.props.classes.footer} >
+          <IconButton 
             id="Github-icon"
             target="_blank"
             href="https://github.com/jtarulla/quote-machine"
           >
-            <FontAwesomeIcon  icon={faGithub} size="md"></FontAwesomeIcon>
+            <FontAwesomeIcon fixed icon={faGithub} size="md"></FontAwesomeIcon>
           </IconButton>
         </footer>
       </>
