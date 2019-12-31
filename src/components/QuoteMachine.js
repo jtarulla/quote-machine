@@ -42,7 +42,7 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
   <Card>
     <CardContent>
     <ThemeProvider theme={theme}>
-      <Typography className={useStyles().typography} variant="h3" id="text" color="textSecondary" align="center">
+      <Typography className={useStyles().typography} variant="h2" id="text" color="textSecondary" align="center">
        "{selectedQuote.quote}"  <br /><br /><Typography className={useStyles().typography} variant="h4" id="author" align="right">{selectedQuote.author}</Typography>
       </Typography>
     </ThemeProvider>
@@ -59,7 +59,7 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
       <IconButton
         id="whatsapp-quote"
         target="_blank"
-        href={`https://web.whatsapp.com/send?text="${selectedQuote.quote}" - ${selectedQuote.author}`}
+        href={`whatsapp://send?text="${selectedQuote.quote}" - ${selectedQuote.author}`}
         data-action={"share/whatsapp/share"}
       >
         <FontAwesomeIcon icon={faWhatsapp} size="md"></FontAwesomeIcon>
