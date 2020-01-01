@@ -9,19 +9,17 @@ import IconButton from '@material-ui/core/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { createMuiTheme, ThemeProvider, responsiveFontSizes, makeStyles } from '@material-ui/core/styles';
-import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
 
 let theme = createMuiTheme({
   typography : {
-    fontSize: 17,
-    },
-  fontFamily: [
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(','),
-});
+    fontSize: 19,
+    fontFamily: [
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  }});
 
 const useStyles = makeStyles({
   button: {
@@ -40,7 +38,7 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
     <CardContent>
     <ThemeProvider theme={theme}>
       <Typography className={useStyles().typography} id="text" color="textSecondary" align="center">
-       "{selectedQuote.quote}"  <br /><br /><Typography className={useStyles().typography}  id="author" align="right">{selectedQuote.author}</Typography>
+       <b><i>"{selectedQuote.quote}"</i></b>  <br /><br /><Typography className={useStyles().typography}  id="author" align="right">{selectedQuote.author}</Typography>
       </Typography>
     </ThemeProvider>
     </CardContent>

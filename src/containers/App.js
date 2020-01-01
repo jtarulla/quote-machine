@@ -19,7 +19,7 @@ const styles = {
   footer: {
     background: 'linear-gradient(45deg, #5e63fe 100%, #04e4da 40%)',
     display: 'flex',
-    padding: '0 50% 0',
+    padding: '0 0% 0% 48.4%',
   }
 }
 
@@ -63,7 +63,7 @@ class App extends Component {
     return (
       <>
         <Grid className={this.props.classes.container} id="quote-box" fixed justify="center" container xs ls>
-          <Grid xs={9} item>
+          <Grid xs={6} item>
             {
               this.selectedQuote ?
               <QuoteMachine selectedQuote={this.selectedQuote} handleClick={this.handleClick} /> 
