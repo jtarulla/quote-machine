@@ -14,16 +14,15 @@ const styles = {
   container: {
     alignItems: 'center',
     display: 'flex',
-    height: '92.7vh',
-    background: 'linear-gradient(45deg, #5e63fe 30%, #04e4da 1%)',
-    overflow: 'hidden',
-    margin: 'auto',
+    height: '93.2vh',
+    background: 'linear-gradient(45deg, #5e63fe 30%, #04e4da 0%)',
   },
   footer: {
     background: 'linear-gradient(45deg, #5e63fe 40%, #04e4da 80%)',
     display: 'flex',
     padding: '0% 0% 0% 48%',
-    overflow: 'hidden',
+    height: 'auto',
+    alignItems: 'center',
   }
 }
 
@@ -52,12 +51,11 @@ class App extends Component {
   }
 
   onChange = (event, values) => {
-    const selectedQuote = values.quote
-    this.state.quotes.map((e, index) => {
-      if(e.quote === selectedQuote){
+    if (values) {this.state.quotes.map((e, index) => {
+      if(e.quote === values.quote){
         this.setState({ quoteIndex:index })
       } 
-    })
+    })}
   }
 
   // - ES6 -
@@ -76,16 +74,16 @@ class App extends Component {
   render() {
     return (
       <>
-        <Grid className={this.props.classes.container} id="quote-box" fixed justify="center" container 
-            direction="column"
-            justify="center"
-            alignItems="center"
-            spacing={1}
+        <Grid className={this.props.classes.container} id="quote-box" fixed  container 
+          justify="center"
+          direction="column"
+          alignItems="center"
+          spacing={3}
         >
           <Grid item>
             <SearchBox quotes={this.state.quotes} onChange={this.onChange} />
           </Grid>          
-          <Grid xs={10} xl={6} lg={7} sm={4} item>
+          <Grid xs={10} lg={7} sm={4} item>
             {
               this.selectedQuote ?
               <QuoteMachine selectedQuote={this.selectedQuote} handleClick={this.handleClick} /> 
@@ -93,14 +91,14 @@ class App extends Component {
             }  
           </Grid>
         </Grid> 
-        <footer className={this.props.classes.footer} >
+        <footer className={this.props.classes.footer} fixed item>
           <IconButton 
             id="Github-icon"
             target="_blank"
             href="https://github.com/jtarulla/quote-machine"
             item
           >
-            <FontAwesomeIcon fixed icon={faGithub} size="md"></FontAwesomeIcon>
+            <FontAwesomeIcon fixed icon={faGithub} size="lg"></FontAwesomeIcon>
           </IconButton>
         </footer>
       </>

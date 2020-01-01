@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { createMuiTheme, ThemeProvider, responsiveFontSizes, makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -49,7 +49,7 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
         target="_blank"
         href={encodeURI(`https://twitter.com/intent/tweet?text="${selectedQuote.quote}"&hashtags=${selectedQuote.author},randomQuoteMachine` )}
       >
-        <FontAwesomeIcon icon={faTwitter} size="md"></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTwitter} size="1x"></FontAwesomeIcon>
       </IconButton>
       <IconButton
         id="whatsapp-quote"
@@ -57,7 +57,7 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
         href={`whatsapp://send?text="${selectedQuote.quote}" - ${selectedQuote.author}`}
         data-action={"share/whatsapp/share"}
       >
-        <FontAwesomeIcon icon={faWhatsapp} size="md"></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faWhatsapp} size="1x"></FontAwesomeIcon>
       </IconButton>
     </CardActions>
   </Card>
