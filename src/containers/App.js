@@ -52,14 +52,12 @@ class App extends Component {
   }
 
   onChange = (event, values) => {
-    const index = values
-    this.setState({
-      quoteIndex: index
-    }, () => {
-      // This will output an array of objects
-      // given by Autocompelte options property.
-      console.log(this.state.quoteIndex);
-    });
+    const selectedQuote = values.quote
+    this.state.quotes.map((e, index) => {
+      if(e.quote === selectedQuote){
+        this.setState({ quoteIndex:index })
+      } 
+    })
   }
 
   // - ES6 -
