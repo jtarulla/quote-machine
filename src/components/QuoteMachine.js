@@ -15,6 +15,7 @@ let theme = createMuiTheme({
   typography : {
     fontSize: 19,
     fontFamily: [
+      'Roboto',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
