@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import QuoteMachine from '../components/QuoteMachine';
+import SearchBox from '../components/SearchBox';
+
 import 'typeface-roboto';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import QuoteMachine from '../components/QuoteMachine';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,13 +15,15 @@ const styles = {
     alignItems: 'center',
     display: 'flex',
     height: '92.7vh',
-    background: 'linear-gradient(45deg, #5e63fe 30%, #04e4da 90%)',
+    background: 'linear-gradient(45deg, #5e63fe 30%, #04e4da 1%)',
     overflow: 'hidden',
+    margin: 'auto',
   },
   footer: {
-    background: 'linear-gradient(45deg, #5e63fe 100%, #04e4da 40%)',
+    background: 'linear-gradient(45deg, #5e63fe 40%, #04e4da 80%)',
     display: 'flex',
-    padding: '0 0% 0% 48.4%',
+    padding: '0% 0% 0% 48%',
+    overflow: 'hidden',
   }
 }
 
@@ -28,11 +32,12 @@ class App extends Component {
     super(props)
     this.state = {
       quotes: [],
-      quoteIndex: null
+      quoteIndex: null,
     }
     // it's poddible use ES7 to avoid this
     this.quoteIndex = this.quoteIndex.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.onChange = this.onChange.bind(this)
   }
   componentDidMount() {
     fetch('https://gist.githubusercontent.com/natebass/b0a548425a73bdf8ea5c618149fe1fce/raw/f4231cd5961f026264bb6bb3a6c41671b044f1f4/quotes.json')
@@ -44,6 +49,17 @@ class App extends Component {
     this.setState({
       quoteIndex : this.quoteIndex()
     })
+  }
+
+  onChange = (event, values) => {
+    const index = values
+    this.setState({
+      quoteIndex: index
+    }, () => {
+      // This will output an array of objects
+      // given by Autocompelte options property.
+      console.log(this.state.quoteIndex);
+    });
   }
 
   // - ES6 -
@@ -62,7 +78,15 @@ class App extends Component {
   render() {
     return (
       <>
-        <Grid className={this.props.classes.container} id="quote-box" fixed justify="center" container xs ls>
+        <Grid className={this.props.classes.container} id="quote-box" fixed justify="center" container 
+            direction="column"
+            justify="center"
+            alignItems="center"
+            spacing={1}
+        >
+          <Grid item>
+            <SearchBox quotes={this.state.quotes} onChange={this.onChange} />
+          </Grid>          
           <Grid xs={10} xl={6} lg={7} sm={4} item>
             {
               this.selectedQuote ?
@@ -70,12 +94,13 @@ class App extends Component {
               : null       
             }  
           </Grid>
-        </Grid>
+        </Grid> 
         <footer className={this.props.classes.footer} >
           <IconButton 
             id="Github-icon"
             target="_blank"
             href="https://github.com/jtarulla/quote-machine"
+            item
           >
             <FontAwesomeIcon fixed icon={faGithub} size="md"></FontAwesomeIcon>
           </IconButton>

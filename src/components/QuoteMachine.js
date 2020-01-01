@@ -11,12 +11,11 @@ import { faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { createMuiTheme, ThemeProvider, responsiveFontSizes, makeStyles } from '@material-ui/core/styles';
 
 
+
 let theme = createMuiTheme({
   typography : {
     fontSize: 19,
     fontFamily: [
-      'Roboto',
-      '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
