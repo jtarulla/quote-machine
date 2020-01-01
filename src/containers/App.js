@@ -63,7 +63,7 @@ class App extends Component {
     return (
       <>
         <Grid className={this.props.classes.container} id="quote-box" fixed justify="center" container xs ls>
-          <Grid xs={6} item>
+          <Grid xs={12} sm={6} item>
             {
               this.selectedQuote ?
               <QuoteMachine selectedQuote={this.selectedQuote} handleClick={this.handleClick} /> 
