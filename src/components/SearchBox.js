@@ -13,7 +13,7 @@ export default function SearchBox({ quotes, onChange }) {
       style={{ width: 300 }}
       renderInput={params => (
         <TextField {...params} 
-        label="search your favorite..." 
+        label="find your favorite..." 
         variant="outlined" 
         fullWidth/>
       )}

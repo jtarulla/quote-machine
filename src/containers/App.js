@@ -14,16 +14,9 @@ const styles = {
   container: {
     alignItems: 'center',
     display: 'flex',
-    height: '93.2vh',
+    height: '100vh',
     background: 'linear-gradient(45deg, #5e63fe 30%, #04e4da 0%)',
   },
-  footer: {
-    background: 'linear-gradient(45deg, #5e63fe 40%, #04e4da 80%)',
-    display: 'flex',
-    padding: '0% 0% 0% 48%',
-    height: 'auto',
-    alignItems: 'center',
-  }
 }
 
 class App extends Component {
@@ -39,7 +32,7 @@ class App extends Component {
     this.onChange = this.onChange.bind(this)
   }
   componentDidMount() {
-    fetch('https://gist.githubusercontent.com/natebass/b0a548425a73bdf8ea5c618149fe1fce/raw/f4231cd5961f026264bb6bb3a6c41671b044f1f4/quotes.json')
+    fetch('https://gist.githubusercontent.com/jtarulla/68006cb831e3a319511613d2db83fdde/raw/87f406a4fbe57cfbb76c662553de3ab1ac6144dc/quotes.json')
     .then(response => response.json())
     .then(quotes => this.setState({ quotes }, this.handleClick ))
   }
@@ -80,7 +73,7 @@ class App extends Component {
           alignItems="center"
           spacing={3}
         >
-          <Grid item>
+          <Grid item direction="column">
             <SearchBox quotes={this.state.quotes} onChange={this.onChange} />
           </Grid>          
           <Grid xs={10} lg={7} sm={4} item>
@@ -90,17 +83,21 @@ class App extends Component {
               : null       
             }  
           </Grid>
-        </Grid> 
-        <footer className={this.props.classes.footer} fixed item>
-          <IconButton 
-            id="Github-icon"
-            target="_blank"
-            href="https://github.com/jtarulla/quote-machine"
-            item
+          <Grid item 
+            justify="center"
+            direction="column"
+            alignItems="center"
           >
-            <FontAwesomeIcon fixed icon={faGithub} size="lg"></FontAwesomeIcon>
-          </IconButton>
-        </footer>
+            <IconButton 
+              id="Github-icon"
+              target="_blank"
+              href="https://github.com/jtarulla/quote-machine"
+              item
+            >
+              <FontAwesomeIcon fixed icon={faGithub} size="lg"></FontAwesomeIcon>
+            </IconButton>
+          </Grid>
+        </Grid> 
       </>
     )
   }
