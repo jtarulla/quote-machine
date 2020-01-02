@@ -12,11 +12,10 @@ import IconButton from '@material-ui/core/IconButton';
 
 const styles = {
   container: {
-    alignItems: 'center',
-    display: 'flex',
     height: '100vh',
     background: 'linear-gradient(45deg, #5e63fe 30%, #04e4da 0%)',
-  },
+    display: 'flex',
+    },
 }
 
 class App extends Component {
@@ -67,32 +66,30 @@ class App extends Component {
   render() {
     return (
       <>
-        <Grid className={this.props.classes.container} id="quote-box" fixed  container 
+        <Grid className={this.props.classes.container} id="quote-box" fixed container 
           justify="center"
-          direction="column"
           alignItems="center"
+          direction= 'column' 
           spacing={3}
         >
-          <Grid item direction="column">
+          <Grid item>
             <SearchBox quotes={this.state.quotes} onChange={this.onChange} />
           </Grid>          
-          <Grid xs={10} lg={7} sm={4} item>
+          <Grid xs={9 } lg={7} sm={5} item>
             {
               this.selectedQuote ?
               <QuoteMachine selectedQuote={this.selectedQuote} handleClick={this.handleClick} /> 
               : null       
             }  
           </Grid>
-          <Grid item 
-            justify="center"
-            direction="column"
-            alignItems="center"
+          <Grid fixed item 
+          justify="center"
+          alignItems="center"
           >
-            <IconButton 
+            <IconButton
               id="Github-icon"
               target="_blank"
               href="https://github.com/jtarulla/quote-machine"
-              item
             >
               <FontAwesomeIcon fixed icon={faGithub} size="lg"></FontAwesomeIcon>
             </IconButton>
