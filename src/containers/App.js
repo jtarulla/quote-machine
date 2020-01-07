@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import QuoteMachine from '../components/QuoteMachine';
 import SearchBox from '../components/SearchBox';
 
@@ -18,86 +18,74 @@ const styles = {
     },
 }
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      quotes: [],
-      quoteIndex: null,
+function App({ classes }) {
+
+  const [quotes, setQuotes] = useState([]);
+  const [quoteIndex, setQuoteIndex] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {  
+      const data = await fetch('https://gist.githubusercontent.com/jtarulla/68006cb831e3a319511613d2db83fdde/raw/87f406a4fbe57cfbb76c662553de3ab1ac6144dc/quotes.json');
+      const quotes = await data.json();
+      setQuotes(quotes);
+      setQuoteIndex(Math.floor(Math.random() * quotes.length))
     }
-    // it's poddible use ES7 to avoid this
-    this.quoteIndex = this.quoteIndex.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-    this.onChange = this.onChange.bind(this)
-  }
-  componentDidMount() {
-    fetch('https://gist.githubusercontent.com/jtarulla/68006cb831e3a319511613d2db83fdde/raw/87f406a4fbe57cfbb76c662553de3ab1ac6144dc/quotes.json')
-    .then(response => response.json())
-    .then(quotes => this.setState({ quotes }, this.handleClick ))
+    fetchData()
+  }, []); // empty array to avoid re-rendering
+
+  function handleClick(){
+    setQuoteIndex(generateQuoteIndex())
   }
 
-  handleClick(){
-    this.setState({
-      quoteIndex : this.quoteIndex()
-    })
-  }
-
-  onChange = (event, values) => {
-    if (values) {this.state.quotes.map((e, index) => {
+  function onChange(event, values) {
+    if (values) {quotes.map((e, index) => {
       if(e.quote === values.quote){
-        this.setState({ quoteIndex:index })
+         setQuoteIndex(index)
       } 
     })}
   }
 
-  // - ES6 -
-  get selectedQuote(){
-    if(!this.state.quotes.length || !Number.isInteger(this.state.quoteIndex)) return undefined;
-    return this.state.quotes[this.state.quoteIndex]
+  function getSelectedQuote(){
+    if(!quotes.length || !Number.isInteger(quoteIndex)) return undefined;
+    return quotes[quoteIndex]
   }
 
-  quoteIndex() {
+  function generateQuoteIndex() {
     // it's possible use libray lodash (npm install lodash && import {random} from 'lodash')
-    const index = Math.floor(Math.random() * this.state.quotes.length)
+    const index = Math.floor(Math.random() * quotes.length)
     return index
   }
 
-
-  render() {
-    return (
-      <>
-        <Grid className={this.props.classes.container} id="quote-box" fixed container 
-          justify="center"
-          alignItems="center"
-          direction= 'column' 
-          spacing={3}
-        >
-          <Grid item>
-            <SearchBox quotes={this.state.quotes} onChange={this.onChange} />
-          </Grid>          
-          <Grid xs={9 } lg={7} sm={5} item>
-            {
-              this.selectedQuote ?
-              <QuoteMachine selectedQuote={this.selectedQuote} handleClick={this.handleClick} /> 
-              : null       
-            }  
-          </Grid>
-          <Grid fixed item 
-          justify="center"
-          alignItems="center"
+  return (
+    <>
+      <Grid className={classes.container} id="quote-box" fixed container 
+        justify="center"
+        alignItems="center"
+        direction= 'column' 
+        spacing={3}
+      >
+        <Grid item>
+          <SearchBox quotes={quotes} onChange={onChange} /> 
+        </Grid>          
+        <Grid xs={9} lg={7} sm={5} item>
+          {
+            getSelectedQuote() ?
+            <QuoteMachine selectedQuote={getSelectedQuote()} handleClick={handleClick} /> 
+            : null       
+          }  
+        </Grid>
+        <Grid fixed item>
+          <IconButton
+            id="Github-icon"
+            target="_blank"
+            href="https://github.com/jtarulla/quote-machine"
           >
-            <IconButton
-              id="Github-icon"
-              target="_blank"
-              href="https://github.com/jtarulla/quote-machine"
-            >
-              <FontAwesomeIcon fixed icon={faGithub} size="lg"></FontAwesomeIcon>
-            </IconButton>
-          </Grid>
-        </Grid> 
-      </>
-    )
-  }
+            <FontAwesomeIcon fixed icon={faGithub} size="lg"></FontAwesomeIcon>
+          </IconButton>
+        </Grid>
+      </Grid> 
+    </>
+  )
 }
 
 export default withStyles(styles)(App);
