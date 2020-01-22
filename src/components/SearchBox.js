@@ -13,7 +13,8 @@ export default function SearchBox({ quotes, onChange }) {
       style={{ width: 300 }}
       renderInput={params => (
         <TextField {...params} 
-        label="find your favorite..." 
+	style={{backgroundColor: 'lightBlue', borderRadius:'30px'}}
+	label="find your favorite..." 
         variant="outlined" 
         fullWidth/>
       )}
