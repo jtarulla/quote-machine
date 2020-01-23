@@ -11,11 +11,10 @@ import IconButton from '@material-ui/core/IconButton';
 
 const styles = {
   container: {
-    fontFamily: 'Bangers, cursive',
-    height: '100vh',
-    background: '#0f0c29', /* fallback for old browsers */
-    background: '-webkit-linear-gradient(to left, #24243e, #302b63, #0f0c29)',  /* Chrome 10-25, Safari 5.1-6 */
-    background: 'linear-gradient(to left, #24243e, #302b63, #0f0c29)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: '101vh',
+    background: '#bdc3c7', /* fallback for old browsers */
+    background: '-webkit-linear-gradient(to left, #bdc3c7, #2c3e50)',  /* Chrome 10-25, Safari 5.1-6 */
+    background: 'linear-gradient(to left, #bdc3c7, #2c3e50)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: 'flex',
     },
 }
@@ -26,7 +25,7 @@ function App({ classes }) {
   const [quoteIndex, setQuoteIndex] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {  
+    async function fetchData() {
       const data = await fetch('https://gist.githubusercontent.com/jtarulla/68006cb831e3a319511613d2db83fdde/raw/87f406a4fbe57cfbb76c662553de3ab1ac6144dc/quotes.json');
       const quotes = await data.json();
       setQuotes(quotes);
@@ -43,7 +42,7 @@ function App({ classes }) {
     if (values) {quotes.map((e, index) => {
       if(e.quote === values.quote){
          setQuoteIndex(index)
-      } 
+      }
     })}
   }
 
@@ -60,21 +59,21 @@ function App({ classes }) {
 
   return (
     <>
-      <Grid className={classes.container} id="quote-box" fixed container 
+      <Grid className={classes.container} id="quote-box" fixed container
         justify="center"
         alignItems="center"
-        direction= 'column' 
+        direction= 'column'
         spacing={3}
       >
         <Grid item>
-          <SearchBox quotes={quotes} onChange={onChange} /> 
-        </Grid>          
+          <SearchBox quotes={quotes} onChange={onChange} />
+        </Grid>
         <Grid xs={9} lg={7} sm={5} item>
           {
             getSelectedQuote() ?
-            <QuoteMachine selectedQuote={getSelectedQuote()} handleClick={handleClick} /> 
-            : null       
-          }  
+            <QuoteMachine selectedQuote={getSelectedQuote()} handleClick={handleClick} />
+            : null
+          }
         </Grid>
         <Grid fixed item>
           <IconButton
@@ -85,7 +84,7 @@ function App({ classes }) {
             <FontAwesomeIcon fixed icon={faGithub} size="lg"></FontAwesomeIcon>
           </IconButton>
         </Grid>
-      </Grid> 
+      </Grid>
     </>
   )
 }

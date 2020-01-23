@@ -14,20 +14,17 @@ import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/sty
 
 let theme = createMuiTheme({
   typography : {
-    fontSize: 19,
-    fontFamily: [
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+    fontFamily: ["Indie Flower", "cursive"].join(','),
+    fontSize: 25,
   }});
 
 const useStyles = makeStyles({
   button: {
-    background: 'linear-gradient(45deg, #58cdfd 30%, #58cdfd 90%)',
+    background: '#2c3e50',
     border: 0,
     borderRadius: 9,
     boxShadow: '0 3px 5px 2px rgba(169, 247, 215, .3)',
-    color: 'white',
+    color: '#bdc3c7',
     height: 48,
   },
 });
@@ -64,6 +61,3 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
 )
 
 export default QuoteMachine;
-
-
-
