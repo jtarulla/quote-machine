@@ -10,20 +10,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
-
-
 let theme = createMuiTheme({
   typography : {
     fontFamily: ["Indie Flower", "cursive"].join(','),
-    fontSize: 25,
   }});
 
 const useStyles = makeStyles({
   button: {
     background: '#2c3e50',
     border: 0,
-    borderRadius: 9,
-    boxShadow: '0 3px 5px 2px rgba(169, 247, 215, .3)',
+    borderRadius: '9px',
+    boxShadow: '0 3px 5px 2px rgba(400, 400, 200, .9)',
     color: '#bdc3c7',
     height: 48,
   },
@@ -35,12 +32,12 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
     <CardContent>
     <ThemeProvider theme={theme}>
       <Typography className={useStyles().typography} id="text" color="textSecondary" align="center">
-       <b><i>"{selectedQuote.quote}"</i></b>  <br /><br /><Typography className={useStyles().typography}  id="author" align="right">{selectedQuote.author}</Typography>
+       <h2><b><i>"{selectedQuote.quote}"</i></b></h2>  <br /><Typography className={useStyles().typography}  id="author" align="right"><h2>- {selectedQuote.author}</h2></Typography>
       </Typography>
     </ThemeProvider>
     </CardContent>
     <CardActions>
-      <Button className={useStyles().button} id="new-quote" size="small" onClick={handleClick}>New Quote</Button>
+      <Button className={useStyles().button} id="new-quote" size="small"  onClick={handleClick}>New Quote</Button>
       <IconButton
         id="tweet-quote"
         target="_blank"
