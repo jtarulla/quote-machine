@@ -27,7 +27,6 @@ const useStyles = makeStyles({
 	button: {
 		fontFamily: 'Cinzel Decorative',
 		fontWeight: 'bold',
-		background: '#ff9a6b',
 		borderRadius: '9px',
 		height: 35
 	}
@@ -55,6 +54,7 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
 			<Button
 				className={useStyles().button}
 				id='new-quote'
+				variant='contained'
 				size='small'
 				onClick={handleClick}
 			>
