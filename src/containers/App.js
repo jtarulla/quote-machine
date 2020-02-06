@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles(theme => ({
 	container: {
 		height: '100vh',
-		background: '#c3e8ec'
+		backgroundSize: 'cover'
 	},
 	root: {
 		display: 'flex',
@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
 	footer: {
 		padding: 0,
 		marginTop: 'auto',
-		marginBottom: 0
+		marginBottom: 0,
+		alignItems: 'center'
 	}
 }));
 

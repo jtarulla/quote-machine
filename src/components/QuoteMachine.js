@@ -25,9 +25,9 @@ let theme = createMuiTheme({
 
 const useStyles = makeStyles({
 	button: {
-		fontFamily: 'Mclaren',
+		fontFamily: 'Cinzel Decorative',
 		fontWeight: 'bold',
-		background: '#73b2db',
+		background: '#ff9a6b',
 		borderRadius: '9px',
 		height: 35
 	}
@@ -57,7 +57,6 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
 				id='new-quote'
 				size='small'
 				onClick={handleClick}
-				variant='outlined'
 			>
 				New Quote
 			</Button>
