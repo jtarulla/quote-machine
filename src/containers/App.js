@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles(theme => ({
 	container: {
 		height: '100vh',
-		background: '#48667a'
+		background: '#c3e8ec'
 	},
 	root: {
 		display: 'flex',
@@ -85,7 +85,7 @@ function App() {
 				<Grid item>
 					<SearchBox quotes={quotes} onChange={onChange} />
 				</Grid>
-				<Grid xs sm={10} md={8} lg={10} xl={12} item>
+				<Grid xs={10} sm={10} md={8} lg={10} xl={12} item>
 					{getSelectedQuote() ? (
 						<QuoteMachine
 							selectedQuote={getSelectedQuote()}

@@ -16,10 +16,10 @@ import {
 
 let theme = createMuiTheme({
 	typography: {
-		fontFamily: ['Cinzel Decorative', 'cursive'].join(',')
+		fontFamily: ['Caveat', 'Cinzel Decorative', 'cursive'].join(',')
 	},
 	card: {
-		background: '#2c3e50'
+		background: '#c3e8ec'
 	}
 });
 
@@ -27,9 +27,8 @@ const useStyles = makeStyles({
 	button: {
 		fontFamily: 'Mclaren',
 		fontWeight: 'bold',
-		background: '#2c3e50',
+		background: '#73b2db',
 		borderRadius: '9px',
-		color: '#bdc3c7',
 		height: 35
 	}
 });
@@ -39,15 +38,15 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
 		<CardContent className={useStyles().card}>
 			<ThemeProvider theme={theme}>
 				<Typography className={useStyles().typography} id='text' align='center'>
-					<h1>
-						<i>"{selectedQuote.quote}"</i>
-					</h1>
+					<h1>"{selectedQuote.quote}"</h1>
 					<Typography
 						className={useStyles().typography}
 						id='author'
 						align='right'
 					>
-						<h2>- {selectedQuote.author}</h2>
+						<strong>
+							<h1>- {selectedQuote.author}</h1>
+						</strong>
 					</Typography>
 				</Typography>
 			</ThemeProvider>
@@ -58,6 +57,7 @@ const QuoteMachine = ({ selectedQuote, handleClick }) => (
 				id='new-quote'
 				size='small'
 				onClick={handleClick}
+				variant='outlined'
 			>
 				New Quote
 			</Button>
