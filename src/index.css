@@ -4,7 +4,6 @@ body {
 	background: url(./containers/begin.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-	overflow: hidden;
 }
 
 h1 {
