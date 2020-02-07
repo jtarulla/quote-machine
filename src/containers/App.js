@@ -36,7 +36,7 @@ function App() {
 	useEffect(() => {
 		async function fetchData() {
 			const data = await fetch(
-				'https://gist.githubusercontent.com/jtarulla/68006cb831e3a319511613d2db83fdde/raw/87f406a4fbe57cfbb76c662553de3ab1ac6144dc/quotes.json'
+				'https://gist.githubusercontent.com/jtarulla/68006cb831e3a319511613d2db83fdde/raw/cfbd317f5b7b9180fe7ddf90f3ce6b7cc609024b/quotes.json'
 			);
 			const quotes = await data.json();
 			setQuotes(quotes);
